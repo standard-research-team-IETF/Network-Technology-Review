@@ -1,0 +1,23 @@
+Our paper “Enabling In-situ Programmability in Network Data Plane: From Architecture to Language” was accepted 
+and will be published in USENIX NSDI 2022, a flagship networking conference, in April. In this paper we proposed 
+a new programmable chip architecture which allows non-disruptive in-service data plane reprogramming. It realizes 
+the vision of POF we set out in our earlier paper "Protocol-Oblivious Forwarding: Unleash the Power of SDN 
+through a Future-Proof Forwarding Plane" (ACM HotSDN 2013) in ASICs. In addition to the runtime programmability, 
+the new architecture also has the properties to support stateful data plane functions. We are exploring such 
+possibilities in the follow-up research. We wish this effort would trigger the design of a new breed of 
+programmable networking chips. Below is the abstract of the paper. The full paper can be downloaded from the 
+NSDI’22 conference website for free. 
+
+In-situ programmability refers to the capability for network devices to update data plane functions and protocol 
+processing logic at runtime without interrupting the services, driven by dynamic and interactive network 
+operations towards autonomous networks. The existing programmable switch architecture (e.g., PISA) and 
+programming language (e.g., P4) were designed for monolithic and static implementation, which re-quires a 
+complete programming and deployment cycle for functional update, incurring long delay and service interruption. 
+Addressing the fundamental reasons for such inflexibility, we design a new In-situ Programmable Switch 
+Architecture (IPSA) and the corresponding design flow using rP4, aP4 language extension, as a fix. The compiler 
+contains algorithms to support efficient resource mapping for both base design and incremental updates. To
+manifest the in-situ programming feasibility, we demonstrate several practical use-cases on both a software 
+switch, ipbm, and an FPGA-based prototype. Our experiments and analysis show that IPSA in-curs moderate hardware 
+cost which can be justified by its benefits and compensated by newer chip technologies. The in-situ programmability 
+enabled by IPSA and rP4 advances the state of the art of programmable networks and opens a promising new design 
+space.
