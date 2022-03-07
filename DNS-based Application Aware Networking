@@ -1,0 +1,58 @@
+# DNS-based Appliation Aware Networking Architecture
+
+   Some application flows have specific requirements on
+   networking, such as bandwidth, delay, jitter, reliability, security,
+   perferred path, and so on, to achieve desired quality of service.
+   Users are ready for premium services even if extra cost is
+   involved.  Meanwhile, today's networks have advanced beyond the best-
+   effort model and are capable of providing per-flow services to meet
+   various application requirements (e.g., QoS) by means of
+   programmability, resource management (e.g., network slicing), traffic
+   engineering, and path regulation (e.g., segment routing and service
+   function chaining).
+
+   Application-Aware Networking (APN) is becoming not only a
+   possibility but also a necessity.  However, a clear gap exists.
+   Applications usually only care about the abstract requirements
+   ("WHAT") instead of the actual measures for networks to meet such
+   requirements ("HOW").  Therefore, not only is there a lack of a
+   direct means for networks to tell applications their capabilities but
+   also it is often improper to do so.  Due to the limitation of the
+   commonly available network socket API, it is also difficult for
+   applications to convey their service requirements to networks.
+   Currently application-aware networking schemes either assume the
+   requirements are expressed to network controllers through some out-
+   of-band manner or, in case of IPv6, by resort to encoding the
+   requirements as options into extension headers (e.g., network tokens).  
+   We need a simpler and more extensible way to set up the service contract.
+
+   An architecture to support application aware networking
+   through DNS is therefore defined.  Requirements are incorporated into DNS 
+   queries from a host and the returned information enables access to services 
+   meeting those requirements.  For example, by including new semantics 
+   representing a service commitment embedded in the returned IP addresses (i.e.,
+   semantic addressing).
+
+   The Domain Name System (DNS) is a distributed database that stores
+   data under hierarchical domain names and supports redundant servers,
+   data caching, and security features.  The data is formatted into
+   resource records (RRs) whose content type and structure are indicated
+   by the RR Type field.  A typical use of DNS is that, by running the
+   DNS protocol, a host gets the IP addresses stored at a domain name
+   from DNS servers through a DNS resolver.  Many other types of data
+   besides IP addresses can be stored in and returned by the DNS.
+
+   In a nutshell, the application's service requirements are embedded
+   into the DNS queries from a host.  The DNS replies either provide
+   semantic IP addresses or data that help construct the packet header
+   or headers signaling the special packet handling in networks.  The
+   application flow packets will use the existing socket API to send the
+   packet.  Network devices, after capturing such packets, would decode
+   the semantics and apply any special packet handling accordingly.
+
+   We have published three drafts which descirbe the motivation, architecutre,
+   and several use cases. More use cases are under consideration.
+   
+draft-song-apn-dns-application-aware-networking
+draft-eastlake-dnsop-expressing-qos-requirements
+draft-eastlake-dnsop-rrtype-srv6
